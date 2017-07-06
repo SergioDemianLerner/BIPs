@@ -1,7 +1,7 @@
 <pre>
   BIP: 200
   Title: Block size increase to 2MB coupled with Segwit activation
-  Authors: Sergio Demian Lerner and ...
+  Authors: Sergio Demian Lerner
   Status: Draft
   Type: Standards Track
   Created: 2017-07-01
