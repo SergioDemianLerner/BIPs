@@ -1,5 +1,5 @@
 <pre>
-  BIP: NYA, number to be assigned 
+  BIP: segwit2x, number to be assigned 
   Title: Block size increase to 2MB coupled with Segwit activation
   Authors: Sergio Demian Lerner
   Status: Draft
