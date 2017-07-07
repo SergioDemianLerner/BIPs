@@ -1,5 +1,5 @@
 <pre>
-  BIP: 200
+  BIP: NYA, number to be assigned 
   Title: Block size increase to 2MB coupled with Segwit activation
   Authors: Sergio Demian Lerner
   Status: Draft
@@ -17,7 +17,7 @@ To prevent DoS attacks, transaction serialized size is limited to 1,000,000 byte
 
 # Enabling Segwit
 # Reducing temporarily the fee pressure until other scaling techniques such as the Lighntning Network, sidechains, drivechains and extension blocks prove to be useful or not for Bitcoin scaling.
-# Maximum transacttion size is kept, to maximize compatibility with current software and prevent algorithmic and data size DoS's.
+# Maximum transaction size is kept, to maximize compatibility with current software and prevent algorithmic and data size DoS's.
 
 ==Specification==
 
