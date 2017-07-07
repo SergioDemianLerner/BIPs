@@ -5,6 +5,8 @@
   Status: Draft
   Type: Standards Track
   Created: 2017-07-01
+  License: BSD-2-Clause
+           OPL
 </pre>
 
 ==Abstract==
@@ -13,11 +15,21 @@ This BIPs describes a one-time increase in the maximum non-witness block size fr
 
 To prevent DoS attacks, transaction serialized size is limited to 1,000,000 bytes, excluding witness data.
 
+
+==Copyright==
+
+This BIP is dual-licensed under the Open Publication License and BSD 2-clause license.
+
 ==Motivation==
 
 # Enabling Segwit
 # Reducing temporarily the fee pressure until other scaling techniques such as the Lighntning Network, sidechains, drivechains and extension blocks prove to be useful or not for Bitcoin scaling.
 # Maximum transaction size is kept, to maximize compatibility with current software and prevent algorithmic and data size DoS's.
+
+==Rationale==
+
+The "transaction pattern" is defined as the average number and size of transaction inputs and outputs in a block.
+Assuming the current transaction pattern is replicated in a 2 MB plain-sized block that is 100% filled with transactions, then the witness-serialized block would occupy 3.6 MB [1]. This is considered safe by many users, companies, miners and academics [2]. 
 
 ==Specification==
 
@@ -46,3 +58,7 @@ https://github.com/btc1/bitcoin branch segwit2x
 ==Acknowledgements==
 
 Thanks to Jeff Garzik for the corrections and suggestions.
+
+==References==
+[1] https://github.com/SergioDemianLerner/SegwitStats
+[2] http://fc16.ifca.ai/bitcoin/papers/CDE+16.pdf
