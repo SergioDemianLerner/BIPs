@@ -57,7 +57,7 @@ https://github.com/btc1/bitcoin branch segwit2x
 
 ==Acknowledgements==
 
-Thanks to Jeff Garzik for the corrections and suggestions.
+Thanks to Jeff Garzik and the Segwit2x group for the reference code, corrections and suggestions.
 
 ==References==
 [1] https://github.com/SergioDemianLerner/SegwitStats
