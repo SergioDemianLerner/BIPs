@@ -33,16 +33,23 @@ Assuming the current transaction pattern is replicated in a 2 MB plain-sized blo
 
 ==Specification==
 
-# The plain block size is defined as the serialized block size without witness programs.
-# Deploy a modified BIP91 to activate Segwit. The only modification is that the signal "segsignal" is replaced by "segwit2x".
-# If segwit2x (BIP91 signal) activates at block N, then block N+12960 activates a new plain block size limit of 2 MB (2,000,000 bytes). In this case, at block N+12960 a hard-fork occurs.
-# The block that activates the hard-fork must have a plain block size greater than 1 MB.
+
+Consensus
+
+# The no-wit block size is defined as the serialized block size without witness programs.
+# Deploy a modified BIP91 to activate Segwit. The BIP9 version bit 4 is redefined as the segwit2x signal.
+# If segwit2x activates at block N, then at block N+12960 the block weight limit rises from 4,000,000 to 8,000,000. Also the maximum sigop cost per blocks rises from 80,0000 to 160,000.  Both changes represent hard-forks.
+# The block that activates the hard-fork must have a no-wit block size greater than 1,000,000 bytes.
 # Any transaction with a non-witness serialized size exceeding 1,000,000 is invalid.
+
+Non-consensus
+
+# BIP91 is modified so the signal "segsignal" is replaced by "segwit2x". This affects the rpc mining interface (getblocktemplate).
 
 
 ==Backward compatibility==
 
-Older clients are not compatible with this change.  The first block exceeding 1,000,000 bytes will partition older clients off the new network.
+Older clients are not compatible with this change.  The first block having no-wit size exceeding 1,000,000 bytes will partition older clients off the new network.
 
 ==Discussion==
 
@@ -50,6 +57,10 @@ In the short term, an increase is needed to continue to facilitate
 network growth, and buy time for more comprehensive solutions to be
 developed and tested, such as the Lightning Network, sidechains, drivechains and extension blocks.
 This reduces the fee pressure on users and companies creating on-chain transactions, matching market expectations and preventing further market disruption.
+
+The restriction of the size of a non-witness serialized transaction prevents worsening quadratically the effects of the O(N^2) hashing attack vector but this BIP is not a final solution to this problem. This BIP doubles the worst case block processing time. However future soft-forks may tackle this problem directly by limiting sigops per input, per transaction, or total bytes hashed per transaction. 
+Note that the maximum transaction size can exceed 1 MB by using witness programs, but Signature checks in witness programs do not require full transaction re-hashing and therefore do not worsen the attack vector.
+  
 
 ==Implementation==
 
